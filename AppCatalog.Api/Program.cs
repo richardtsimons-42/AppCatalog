@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Token settings from config
 var tokenSettings = builder.Configuration.GetSection(TokenSettings.SectionName).Get<TokenSettings>()
     ?? throw new InvalidOperationException("TokenSettings not configured.");
+builder.Services.AddSingleton(tokenSettings);
 
 // Services
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -45,6 +46,10 @@ builder.Services.AddAuthorization();
 // Controllers
 builder.Services.AddControllers();
 
+// Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 // CORS
 builder.Services.AddCors(options =>
 {
@@ -62,6 +67,8 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseCors("AllowFrontend");
