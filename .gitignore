@@ -1,0 +1,26 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+
+## Node
+AppCatalog.Web/node_modules/
+AppCatalog.Web/dist/
+
+## Docker volumes
+data/
+
+## IDE
+.vs/
+.vscode/
+*.swp
+*.swo
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Environment
+app-catalog/AppCatalog.Api/appsettings.Development.json
