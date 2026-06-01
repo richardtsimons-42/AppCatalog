@@ -1,12 +1,10 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
-COPY *.sln .
-COPY AppCatalog.Api/*.csproj AppCatalog.Api/
-RUN dotnet restore AppCatalog.Api/AppCatalog.Api.csproj
+COPY AppCatalog.Api.csproj .
+RUN dotnet restore
 
-COPY AppCatalog.Api/. AppCatalog.Api/
-WORKDIR /src/AppCatalog.Api
+COPY . .
 RUN dotnet publish -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
