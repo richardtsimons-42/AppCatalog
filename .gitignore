@@ -10,7 +10,7 @@ AppCatalog.Web/node_modules/
 AppCatalog.Web/dist/
 
 ## Docker volumes
-data/
+**/data/
 
 ## IDE
 .vs/
